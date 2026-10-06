@@ -7,7 +7,7 @@
 <meta name="description" content="Portfolio of Sohrab Malek, AI Engineer and Head of IT.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter+Tight:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#EEF1F6; --ink:#1A2233; --muted:#5B6577; --line:#D3DAE5; --accent:#2F5BEA; --accent2:#7A5CFA; --mint:#2EC4B6; --card:rgba(255,255,255,.72); --done:#1F8A5B;
@@ -37,10 +37,24 @@ header a:hover,header a.active{color:var(--accent)}
 @keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-40px,30px) scale(1.08)}}
 .grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 30% 50%,#000 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 30% 50%,#000 20%,transparent 70%);opacity:.5}
 .hero-inner{position:relative;max-width:1100px;margin:0 auto;width:100%}
+.hero-inner{display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center}
+.hero-text{min-width:0}
+.portrait{position:relative;width:clamp(240px,28vw,380px);aspect-ratio:4/5}
+.portrait::before{content:"";position:absolute;inset:-14px;border-radius:36px;background:linear-gradient(135deg,var(--accent),var(--accent2),var(--mint));filter:blur(28px);opacity:.45;z-index:0}
+.portrait::after{content:"";position:absolute;inset:-8px;border-radius:32px;border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);z-index:0}
+.portrait img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;border-radius:28px;box-shadow:0 30px 60px -25px rgba(26,34,51,.5);display:block}
+@media (max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:2rem}
+  .portrait{order:-1;width:180px;aspect-ratio:1;margin-top:1rem}
+  .portrait img{border-radius:50%}
+  .portrait::before{border-radius:50%}
+  .portrait::after{border-radius:50%}
+}
+@media print{.portrait{width:110px;aspect-ratio:1}.portrait::before,.portrait::after{display:none}.portrait img{border-radius:50%;box-shadow:none}.hero-inner{grid-template-columns:1fr auto;gap:1.5rem}}
 .hello{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .9rem;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:.95rem;color:var(--muted)}
 .hello i{width:8px;height:8px;border-radius:50%;background:var(--done);box-shadow:0 0 0 0 var(--done);animation:ping 2s infinite}
 @keyframes ping{0%{box-shadow:0 0 0 0 rgba(31,138,91,.5)}100%{box-shadow:0 0 0 10px rgba(31,138,91,0)}}
-.hero h1{font-size:clamp(3.2rem,10vw,7.5rem);line-height:.95;font-weight:800;letter-spacing:-0.04em;margin-top:1.5rem}
+.hero h1{font-family:"Inter Tight","Helvetica Neue",Arial,sans-serif;font-size:clamp(3rem,9vw,6.75rem);line-height:1;font-weight:700;letter-spacing:-0.035em;margin-top:1.5rem}
 .hero h1 span{display:block;background:linear-gradient(100deg,var(--ink) 30%,var(--accent) 60%,var(--accent2) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
 .typed{font-size:clamp(1.3rem,3vw,1.9rem);font-weight:600;margin-top:1.25rem;min-height:1.6em}
 .typed b{color:var(--accent)}
@@ -53,7 +67,7 @@ header a:hover,header a.active{color:var(--accent)}
 .btn.primary:hover{transform:translateY(-2px);box-shadow:0 16px 36px -10px var(--accent)}
 .btn.ghost{border:1px solid var(--line);color:var(--ink);background:var(--card)}
 .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
-.stats{display:flex;flex-wrap:wrap;gap:3rem;margin-top:4rem}
+.stats{display:flex;flex-wrap:wrap;gap:1.5rem 2.25rem;margin-top:3.5rem}
 .stats b{display:block;font-size:2.75rem;font-weight:800;line-height:1;letter-spacing:-0.02em}
 .stats span{color:var(--muted);font-size:.95rem}
 
@@ -193,6 +207,7 @@ dialog > p{color:var(--muted);margin:.25rem 0 1.5rem}
 .opt span{display:flex;flex-direction:column;line-height:1.3}
 .opt small{color:var(--muted);font-size:.9rem}
 .opt.wa svg{color:#1FA855}.opt.wa:hover{border-color:#1FA855}
+.opt.li svg{color:#0A66C2}.opt.li:hover{border-color:#0A66C2}
 .opt.mail svg{color:var(--accent)}.opt.mail:hover{border-color:var(--accent)}
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
@@ -218,15 +233,16 @@ dialog > p{color:var(--muted);margin:.25rem 0 1.5rem}
   <div class="grid-bg"></div>
   <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
   <div class="hero-inner">
+    <div class="hero-text">
     <span class="hello"><i></i>Open to new opportunities</span>
     <h1><span>Sohrab Malek</span></h1>
     <p class="print-only print-role">AI Engineer and Head of IT</p>
-    <p class="print-only print-contact"><span>Phone</span>: +45 93 93 78 32 | sohrabmalek16@gmail.com | linkedin.com/in/yourprofile</p>
+    <p class="print-only print-contact"><span>Phone</span>: +45 93 93 78 32 | sohrabmalek16@gmail.com | linkedin.com/in/sohrabmalek</p>
     <p class="typed">I work as <b id="typed"></b><span class="caret"></span></p>
     <p class="intro">I turn business needs into working systems. I have built the IT foundation, data platform and AI automation at DRIVR, a fast growing Danish mobility tech company, and I now ship code to its production platforms.</p>
     <div class="cta">
       <button type="button" class="btn primary" data-contact>Get in touch</button>
-      <a class="btn ghost" href="https://linkedin.com/in/sohrabmalek" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/sohrabmalek/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
     <div class="stats">
       <div><b data-count="5" data-suffix="+">0</b><span>years in IT, data and automation</span></div>
@@ -234,6 +250,10 @@ dialog > p{color:var(--muted);margin:.25rem 0 1.5rem}
       <div><b data-count="7">0</b><span>AI goals shipped in Sales</span></div>
       <div><b data-count="16">0</b><span>certificates</span></div>
     </div>
+    </div>
+    <figure class="portrait">
+      <img src="1787389072578.png" alt="Portrait of Sohrab Malek" width="440" height="550" loading="eager">
+    </figure>
   </div>
 </section>
 
@@ -308,7 +328,6 @@ dialog > p{color:var(--muted);margin:.25rem 0 1.5rem}
 
       <div class="employer">
         <h3><a href="https://sentia.dk" target="_blank" rel="noopener">Sentia</a></h3>
-        
         <p class="meta">Herlev, Feb 2021 to Jul 2021</p>
         <ol class="timeline">
           <li>
@@ -490,6 +509,10 @@ dialog > p{color:var(--muted);margin:.25rem 0 1.5rem}
     <a class="opt mail" href="mailto:sohrabmalek16@gmail.com">
       <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
       <span><b>Email</b><small>sohrabmalek16@gmail.com</small></span>
+    </a>
+    <a class="opt li" href="https://www.linkedin.com/in/sohrabmalek/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05a3.75 3.75 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.21 0 22.23 0Z"/></svg>
+      <span><b>LinkedIn</b><small>linkedin.com/in/sohrabmalek</small></span>
     </a>
   </div>
 </dialog>
