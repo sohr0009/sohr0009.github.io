@@ -2,92 +2,75 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Sohrab Malek | Portfolio</title>
 <meta name="description" content="Portfolio of Sohrab Malek">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter+Tight:wght@600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#EEF1F6; --ink:#1A2233; --muted:#5B6577; --line:#D3DAE5; --accent:#2F5BEA; --accent2:#7A5CFA; --mint:#2EC4B6; --card:rgba(255,255,255,.72); --done:#1F8A5B;
-  --font:"Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
-}
-@media (prefers-color-scheme: dark){
-  :root{--bg:#10151F; --ink:#E6EAF2; --muted:#9AA4B6; --line:#263044; --accent:#7C9BFF; --accent2:#A88BFF; --mint:#4FE0D2; --card:rgba(27,34,50,.72); --done:#4CC68D;}
-}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:1.0625rem;line-height:1.6;overflow-x:hidden}
+body{background:var(--bg);color:var(--ink);font-size:1.0625rem;line-height:1.6;overflow-x:hidden}
 a{color:var(--accent);text-underline-offset:3px}
 a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
-
-/* progress + nav */
-#progress{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2),var(--mint));z-index:30}
-header{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:20;display:flex;gap:1.5rem;align-items:center;padding:.6rem 1.25rem;border-radius:999px;background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line);box-shadow:0 8px 30px rgba(26,34,51,.08)}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:30}
+header{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:20;display:flex;gap:1.5rem;align-items:center;padding:.6rem 1.25rem;border-radius:999px;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--line)}
 header a{color:var(--ink);text-decoration:none;font-weight:600;font-size:.95rem}
 header a:hover,header a.active{color:var(--accent)}
-
-/* hero */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:7rem 1.5rem 4rem;overflow:hidden}
-.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;pointer-events:none}
-.b1{width:520px;height:520px;background:var(--accent);top:-120px;right:-100px;animation:float 18s ease-in-out infinite}
-.b2{width:420px;height:420px;background:var(--accent2);bottom:-120px;right:20%;animation:float 22s ease-in-out infinite reverse}
-.b3{width:300px;height:300px;background:var(--mint);top:30%;left:-120px;opacity:.35;animation:float 26s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-40px,30px) scale(1.08)}}
-.grid-bg{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(ellipse at 30% 50%,#000 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 30% 50%,#000 20%,transparent 70%);opacity:.5}
+.hero{position:relative;min-height:88vh;display:flex;align-items:center;padding:7rem 1.5rem 4rem;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.35;pointer-events:none;display:none}
+.b1{width:520px;height:520px;background:var(--accent);top:-140px;right:-120px}
+.b2{width:420px;height:420px;background:var(--accent2);bottom:-140px;right:20%}
+.b3{display:none!important}
+.grid-bg{display:none}
 .hero-inner{position:relative;max-width:1100px;margin:0 auto;width:100%}
 .hello{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .9rem;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:.95rem;color:var(--muted)}
-.hello i{width:8px;height:8px;border-radius:50%;background:var(--done);box-shadow:0 0 0 0 var(--done);animation:ping 2s infinite}
-@keyframes ping{0%{box-shadow:0 0 0 0 rgba(31,138,91,.5)}100%{box-shadow:0 0 0 10px rgba(31,138,91,0)}}
-.hero h1{font-family:"Inter Tight","Helvetica Neue",Arial,sans-serif;font-size:clamp(2.6rem,6vw,4.5rem);line-height:1.05;font-weight:700;letter-spacing:-0.035em;margin-top:1.5rem}
-.hero h1 span{display:inline-block;background:linear-gradient(100deg,var(--ink) 30%,var(--accent) 60%,var(--accent2) 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.typed{font-size:clamp(1.3rem,3vw,1.9rem);font-weight:600;margin-top:1.25rem;min-height:1.6em}
+.hello i{width:8px;height:8px;border-radius:50%;background:var(--done);animation:ping 2s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--done) 50%,transparent)}100%{box-shadow:0 0 0 10px transparent}}
+.hero h1{font-size:clamp(2.2rem,5vw,3.75rem);line-height:1.05;letter-spacing:-0.02em;margin-top:1.5rem;max-width:18ch}
+.typed{font-size:clamp(1.3rem,3vw,1.9rem);font-weight:500;margin-top:1.25rem;min-height:1.6em}
 .typed b{color:var(--accent)}
 .caret{display:inline-block;width:3px;height:1em;background:var(--accent);vertical-align:-.12em;margin-left:3px;animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 .hero p.intro{max-width:52ch;margin-top:1.25rem;color:var(--muted);font-size:1.15rem}
 .cta{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2.25rem;align-items:center}
-.btn{display:inline-block;padding:.85rem 1.5rem;border-radius:12px;font-weight:600;text-decoration:none;transition:transform .2s,box-shadow .2s}
-.btn.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 10px 30px -10px var(--accent)}
-.btn.primary:hover{transform:translateY(-2px);box-shadow:0 16px 36px -10px var(--accent)}
+.btn{display:inline-block;padding:.85rem 1.5rem;border-radius:var(--r);font-weight:600;text-decoration:none;transition:filter .2s,border-color .2s,color .2s}
+.btn.primary{background:var(--accent);color:var(--on)}
+.btn.primary:hover{filter:brightness(1.08)}
 .btn.ghost{border:1px solid var(--line);color:var(--ink);background:var(--card)}
 .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:3.5rem;text-align:center}
 .stats > div{display:flex;flex-direction:column;align-items:center}
 @media (max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}}
-.stats b{display:block;font-size:2.75rem;font-weight:800;line-height:1;letter-spacing:-0.02em}
+.stats b{display:block;font-size:2.75rem;line-height:1;color:var(--ink)}
 .stats span{color:var(--muted);font-size:.95rem}
-
-/* content */
 main{max-width:1100px;margin:0 auto;padding:2rem 1.5rem 4rem}
 main section{margin:0 0 7rem;scroll-margin-top:90px}
 .employer,.group{scroll-margin-top:100px}
-h2{font-size:clamp(2rem,4.5vw,3rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:2rem}
+h2{font-size:clamp(2rem,4.5vw,3rem);letter-spacing:-0.02em;line-height:1.1;margin-bottom:2rem}
 h3{font-size:1.2rem;font-weight:600;line-height:1.3}
 h4{font-size:1.05rem;font-weight:600;margin-bottom:.6rem}
 .lead{color:var(--muted);max-width:62ch;margin:-1rem 0 2rem;font-size:1.1rem}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
 .reveal.in{opacity:1;transform:none}
-
 .employer{display:grid;grid-template-columns:260px 1fr;grid-template-rows:min-content 1fr;gap:2rem;padding:2rem 0;border-top:1px solid var(--line)}
-.employer > h3{font-size:1.6rem;font-weight:800;grid-column:1}
-.employer > h3 a{color:var(--ink);text-decoration:none;background:linear-gradient(var(--accent),var(--accent)) left bottom/0 2px no-repeat;transition:background-size .3s}
-.employer > h3 a:hover{background-size:100% 2px;color:var(--accent)}
+.employer > h3{font-size:1.6rem;grid-column:1}
+.employer > h3 a{color:var(--ink);text-decoration:none}
+.employer > h3 a:hover{color:var(--accent)}
 .employer > .meta{grid-column:1;align-self:start;color:var(--muted);font-size:.95rem;margin-top:-1.5rem}
 .employer > .timeline{grid-column:2;grid-row:1 / span 2}
 .timeline{list-style:none;position:relative;padding-left:1.75rem}
-.timeline::before{content:"";position:absolute;left:0;top:.4rem;bottom:0;width:2px;background:linear-gradient(var(--accent),var(--accent2),transparent)}
+.timeline::before{content:"";position:absolute;left:0;top:.4rem;bottom:0;width:2px;background:var(--line)}
 .timeline > li{position:relative;margin-bottom:2rem}
 .timeline > li::before{content:"";position:absolute;left:calc(-1.75rem - 6px);top:.45rem;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
-.timeline > li.now::before{background:var(--accent);box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 25%,transparent)}
+.timeline > li.now::before{background:var(--accent)}
 .period{color:var(--muted);font-size:.9rem}
 .timeline p.desc{margin-top:.35rem;max-width:62ch}
 .timeline ul{margin:.5rem 0 0 1.1rem;max-width:62ch}
-
 .projects{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-flow:dense;gap:1.25rem}
 .project.wide{grid-column:span 2}
-.group{font-size:1.35rem;font-weight:800;margin:0 0 1rem;color:var(--muted)}
+.group{font-size:1.35rem;margin:0 0 1rem;color:var(--muted)}
 .group a{color:var(--ink);text-decoration:none}
 .group a:hover{color:var(--accent)}
 .projects + .group{margin-top:3rem}
@@ -96,78 +79,65 @@ h4{font-size:1.05rem;font-weight:600;margin-bottom:.6rem}
 .project.full{grid-column:1 / -1}
 @media (max-width:1000px){.projects{grid-template-columns:repeat(2,1fr)}.project.wide{grid-column:span 2}}
 @media (max-width:640px){.projects{grid-template-columns:1fr}.project.wide,.project.full{grid-column:auto}}
-.project{position:relative;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.6rem;overflow:hidden;transition:transform .25s,border-color .25s;backdrop-filter:blur(8px)}
-.project::before{content:"";position:absolute;inset:0;background:radial-gradient(380px circle at var(--x,50%) var(--y,0%),color-mix(in srgb,var(--accent) 16%,transparent),transparent 45%);opacity:0;transition:opacity .3s;pointer-events:none}
-.project:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
-.project:hover::before{opacity:1}
-.project p{color:var(--muted);margin-top:.5rem;position:relative}
-.project h3{position:relative}
-.tag{position:relative;display:inline-block;font-size:.8rem;font-weight:600;color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent);padding:.15rem .65rem;border-radius:999px;margin-bottom:.75rem}
-
+.project{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.6rem;overflow:hidden;transition:border-color .25s}
+.project:hover{border-color:color-mix(in srgb,var(--accent) 55%,var(--line))}
+.project p{color:var(--muted);margin-top:.5rem}
+.tag{display:inline-block;font-size:.8rem;font-weight:600;color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent);padding:.15rem .65rem;border-radius:999px;margin-bottom:.75rem}
 .filters{display:flex;flex-wrap:wrap;gap:.5rem;margin:-.5rem 0 2rem}
 .filters button{font:inherit;font-size:.9rem;font-weight:600;cursor:pointer;padding:.4rem .9rem;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);transition:all .2s}
 .filters button:hover{border-color:var(--accent);color:var(--accent)}
-.filters button.on{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent;color:#fff}
+.filters button.on{background:var(--accent);border-color:transparent;color:var(--on)}
 #projects.filtered .project{grid-column:auto!important}
 #projects.filtered .project.wide h3{font-size:1.2rem}
 .project.hide,.group.hide,.projects.hide{display:none}
-@media print{.filters{display:none}}
-.framework{position:relative;border-radius:24px;padding:2.25rem;background:var(--card);border:1px solid var(--line);overflow:hidden}
-.framework::after{content:"";position:absolute;width:360px;height:360px;right:-120px;top:-120px;background:radial-gradient(circle,color-mix(in srgb,var(--accent2) 35%,transparent),transparent 65%);pointer-events:none}
-.win{position:relative;display:flex;gap:1.1rem;align-items:center;padding:1.25rem 1.5rem;border-radius:16px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;margin-bottom:2rem}
-.win b{font-size:1.25rem}
-.win span:not(.trophy){opacity:.9}
-.trophy{font-size:2.4rem;line-height:1;animation:bob 3s ease-in-out infinite}
-@keyframes bob{50%{transform:translateY(-5px) rotate(-6deg)}}
-.track{position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.75rem}
+.framework{position:relative;border-radius:var(--r);padding:2.25rem;background:var(--card);border:1px solid var(--line);overflow:hidden}
+.win{display:flex;gap:1.1rem;align-items:center;padding:1.25rem 1.5rem;border-radius:var(--r);background:color-mix(in srgb,var(--accent) 10%,var(--card));border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);margin-bottom:2rem}
+.win b{font-size:1.25rem;color:var(--accent)}
+.trophy{font-size:2.4rem;line-height:1}
+.track{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.75rem}
 .track ul{list-style:none}
 .track li{padding-left:1.8rem;position:relative;margin-bottom:.6rem}
 .track li::before{content:"✓";position:absolute;left:0;top:.1rem;width:1.25rem;height:1.25rem;border-radius:50%;background:color-mix(in srgb,var(--done) 18%,transparent);color:var(--done);font-size:.75rem;font-weight:800;display:grid;place-items:center}
-
-.edu{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:2rem}
+.edu{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:2rem}
 .edu-head{display:flex;justify-content:space-between;gap:1.5rem;align-items:flex-start}
-.edu-head h3{font-size:1.4rem;font-weight:800;margin-top:.2rem}
+.edu-head h3{font-size:1.4rem;margin-top:.2rem}
 .school{color:var(--muted);margin-top:.2rem}
 .school a{color:var(--ink);font-weight:600;text-decoration:none}
 .school a:hover{color:var(--accent)}
-.ects{flex:none;text-align:center;padding:.6rem 1rem;border-radius:14px;background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent);font-size:.85rem;font-weight:600}
+.ects{flex:none;text-align:center;padding:.6rem 1rem;border-radius:var(--r);background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent);font-size:.85rem;font-weight:600}
 .ects b{display:block;font-size:1.6rem;line-height:1.1}
 .edu .desc{margin:1.25rem 0 1.5rem;max-width:70ch}
 .courses{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.6rem 2rem}
 .courses li{padding-left:1.4rem;position:relative}
-.courses li::before{content:"";position:absolute;left:0;top:.6rem;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+.courses li::before{content:"";position:absolute;left:0;top:.6rem;width:8px;height:8px;border-radius:50%;background:var(--accent)}
 @media (max-width:640px){.edu-head{flex-direction:column}}
-@media print{.edu{padding:1rem;break-inside:avoid}}
 .chips{display:flex;flex-wrap:wrap;gap:.6rem}
 .hello.loc svg{color:var(--accent)}
 .langs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem}
-.langcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.5rem}
+.langcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.5rem}
 .langcard p{color:var(--muted);margin:.25rem 0 1rem}
 .bar{display:block;height:6px;border-radius:999px;background:var(--line);overflow:hidden}
-.bar i{display:block;height:100%;width:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.bar i{display:block;height:100%;width:100%;background:var(--accent)}
 .skills{display:flex;flex-wrap:wrap;gap:.6rem}
 .skills span{border:1px solid var(--line);background:var(--card);padding:.45rem 1rem;border-radius:999px;font-size:.95rem;transition:all .2s}
-.skills span:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
-
+.skills span:hover{border-color:var(--accent);color:var(--accent)}
 .certs{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:.25rem 2.5rem}
-.certs li{padding:.8rem 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;transition:padding .2s,color .2s}
-.certs li:hover{padding-left:.5rem;color:var(--accent)}
+.certs li{padding:.8rem 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;transition:color .2s}
+.certs li:hover{color:var(--accent)}
 .certs small{color:var(--muted);white-space:nowrap}
-
-.closing{text-align:center;padding:5rem 1.5rem;border-radius:28px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;position:relative;overflow:hidden}
+.closing{text-align:center;padding:5rem 1.5rem;border-radius:var(--r);background:var(--card);color:var(--ink);border:1px solid var(--line)}
 .closing h2{margin-bottom:1rem}
-.closing p{opacity:.9;max-width:46ch;margin:0 auto 2rem}
-.closing .btn{background:#fff;color:#1A2233}
+.closing p{color:var(--muted);max-width:46ch;margin:0 auto 2rem}
+.closing .btn{background:var(--accent);color:var(--on)}
 footer{text-align:center;color:var(--muted);font-size:.9rem;padding:2rem 0 3rem}
-
 .dd{position:relative}
 .dd-btn{display:inline-flex;align-items:center;gap:.3rem;border:0;background:none;padding:0;font-size:.95rem!important}
 .dd-btn .car{transition:transform .2s}
 .dd.open .car{transform:rotate(180deg)}
 .dd-btn:hover,.dd.active > .dd-btn{color:var(--accent)}
-.dd-menu{position:absolute;top:calc(100% + 14px);left:50%;transform:translate(-50%,6px);min-width:190px;display:flex;flex-direction:column;padding:.4rem;border-radius:14px;background:var(--bg);border:1px solid var(--line);box-shadow:0 18px 40px -12px rgba(26,34,51,.3);opacity:0;visibility:hidden;transition:opacity .18s,transform .18s,visibility .18s;z-index:40}
+.dd-menu{position:absolute;top:calc(100% + 14px);left:50%;transform:translate(-50%,6px);min-width:190px;display:flex;flex-direction:column;padding:.4rem;border-radius:var(--r);background:var(--bg);border:1px solid var(--line);box-shadow:0 18px 40px -12px rgba(0,0,0,.3);opacity:0;visibility:hidden;transition:opacity .18s,transform .18s,visibility .18s;z-index:40}
 .dd-menu::before{content:"";position:absolute;left:0;right:0;top:-16px;height:16px}
-.dd-menu a{padding:.55rem .8rem;border-radius:9px;white-space:nowrap;font-size:.92rem}
+.dd-menu a{padding:.55rem .8rem;border-radius:calc(var(--r) * .7);white-space:nowrap;font-size:.92rem}
 .dd-menu a:hover,.dd-menu a.active{background:color-mix(in srgb,var(--accent) 10%,transparent);color:var(--accent)}
 .dd.open .dd-menu{opacity:1;visibility:visible;transform:translate(-50%,0)}
 @media (hover:hover) and (min-width:861px){.dd:hover .dd-menu{opacity:1;visibility:visible;transform:translate(-50%,0)}.dd:hover .car{transform:rotate(180deg)}}
@@ -175,46 +145,10 @@ header .sep{width:1px;height:20px;background:var(--line)}
 header button{white-space:nowrap;font:inherit;font-weight:600;font-size:.9rem;cursor:pointer;color:var(--ink)}
 .lang{display:inline-flex;padding:3px;border-radius:999px;border:1px solid var(--line);background:transparent}
 .lang b{padding:.15rem .6rem;border-radius:999px;font-weight:600;transition:background .2s,color .2s}
-html[lang="en"] .lang b[data-l="en"],html[lang="da"] .lang b[data-l="da"]{background:var(--accent);color:#fff}
-.print{border:0;padding:.4rem .9rem;border-radius:999px;background:var(--ink);color:var(--bg)!important}
-.print:hover{background:var(--accent);color:#fff!important}
+html[lang="en"] .lang b[data-l="en"],html[lang="da"] .lang b[data-l="da"]{background:var(--accent);color:var(--on)}
+.print{border:0;padding:.4rem .9rem;border-radius:999px;background:var(--accent)!important;color:var(--on)!important}
+.print:hover{filter:brightness(1.08)}
 .print-only{display:none}
-@media print{
-  @page{margin:14mm}
-  :root{--bg:#fff;--ink:#1A2233;--muted:#4A5466;--line:#D3DAE5;--card:#fff}
-  body{background:#fff;font-size:10.5pt;line-height:1.45}
-  #progress,header,.blob,.grid-bg,.cta,.hello,.typed,.closing,dialog,.trophy{display:none!important}
-  .print-only{display:block}
-  .print-role{font-size:14pt;font-weight:600;color:var(--accent);margin-top:.4rem}
-  .print-contact{color:var(--muted);margin-top:.3rem}
-  .hero{min-height:0;padding:0 0 1rem}
-  .hero h1{font-size:30pt;margin-top:0}
-  .hero h1 span{background:none;color:var(--ink)}
-  .hero p.intro{max-width:none;font-size:10.5pt}
-  .stats{margin-top:1rem;gap:2rem}
-  .stats b{font-size:18pt}
-  main{padding:0}
-  main section{margin:0 0 1.5rem}
-  h2,.group{break-after:avoid}
-  h2{font-size:17pt;margin-bottom:.8rem}
-  .reveal{opacity:1!important;transform:none!important}
-  .employer{padding:.8rem 0;grid-template-columns:150px 1fr}
-  .employer > h3{break-after:avoid}
-  .stats{flex-wrap:nowrap}
-  .timeline > li{margin-bottom:.8rem;break-inside:avoid}
-  .projects{grid-template-columns:repeat(2,1fr)!important;gap:.6rem}
-  .project,.project.wide{grid-column:auto!important;padding:.8rem;border-radius:10px;break-inside:avoid;backdrop-filter:none}
-  .project.full{grid-column:1 / -1!important}
-  .project.wide h3{font-size:inherit}
-  .project::before,.framework::after{display:none}
-  .framework{padding:1rem;break-inside:avoid}
-  .win{background:none;color:var(--ink);border:1px solid var(--line);padding:.6rem 1rem}
-  .win b{color:var(--accent)}
-  .skills span{padding:.2rem .6rem;font-size:9pt}
-  .certs li{padding:.35rem 0;font-size:9.5pt}
-  a{color:var(--ink);text-decoration:none}
-  footer{padding:1rem 0 0}
-}
 @media (max-width:860px){header .sep{display:none}}
 @media (max-width:860px){
   header{gap:.6rem 1rem;padding:.6rem 1rem;width:calc(100% - 24px);flex-wrap:wrap;justify-content:center;border-radius:20px}
@@ -224,67 +158,78 @@ html[lang="en"] .lang b[data-l="en"],html[lang="da"] .lang b[data-l="da"]{backgr
   .employer > .timeline{grid-column:1;grid-row:auto}
 }
 button.btn{border:0;cursor:pointer;font:inherit;font-weight:600}
-dialog{margin:auto;border:1px solid var(--line);border-radius:22px;padding:2rem;width:min(440px,calc(100% - 32px));background:var(--bg);color:var(--ink);box-shadow:0 30px 80px -20px rgba(26,34,51,.45)}
-dialog::backdrop{background:rgba(16,21,31,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+dialog{margin:auto;border:1px solid var(--line);border-radius:var(--r);padding:2rem;width:min(440px,calc(100% - 32px));background:var(--bg);color:var(--ink);box-shadow:0 30px 80px -20px rgba(0,0,0,.45)}
+dialog::backdrop{background:rgba(0,0,0,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 dialog[open]{animation:pop .25s ease}
 @keyframes pop{from{opacity:0;transform:translateY(12px) scale(.97)}}
-dialog h3{font-size:1.6rem;font-weight:800}
+dialog h3{font-size:1.6rem}
 .dhead{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;padding-right:1.5rem}
 .dhead p{color:var(--muted);margin-top:.15rem}
-.avatar{width:64px;height:64px;border-radius:50%;object-fit:cover;flex:none;box-shadow:0 0 0 3px var(--bg),0 0 0 5px var(--accent)}
+.avatar{width:64px;height:64px;border-radius:50%;flex:none;display:grid;place-items:center;background:var(--accent);color:var(--on);font-weight:700;font-size:1.3rem}
 .x{position:absolute;top:14px;right:16px;border:0;background:none;color:var(--muted);font-size:1.8rem;line-height:1;cursor:pointer}
 .x:hover{color:var(--ink)}
 .opts{display:grid;gap:.75rem}
-.opt{display:flex;gap:1rem;align-items:center;padding:1rem 1.25rem;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none;transition:transform .2s,border-color .2s}
-.opt:hover{transform:translateY(-2px)}
+.opt{display:flex;gap:1rem;align-items:center;padding:1rem 1.25rem;border-radius:var(--r);border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none;transition:border-color .2s}
 .opt span{display:flex;flex-direction:column;line-height:1.3}
 .opt small{color:var(--muted);font-size:.9rem}
 .opt.wa svg{color:#1FA855}.opt.wa:hover{border-color:#1FA855}
 .opt.li svg{color:#0A66C2}.opt.li:hover{border-color:#0A66C2}
 .opt.mail svg{color:var(--accent)}.opt.mail:hover{border-color:var(--accent)}
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation:none!important;transition:none!important}
-  .reveal{opacity:1;transform:none}
-}
 .theme{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:transparent;cursor:pointer;color:var(--ink)}
 .theme:hover{border-color:var(--accent);color:var(--accent)}
 .theme .moon{display:none}
 :root[data-theme="dark"] .theme .sun{display:none}
 :root[data-theme="dark"] .theme .moon{display:block}
-:root{--bg:#FAF9F5;--ink:#1F1E1D;--muted:#6B6A65;--line:#E8E6DC;--accent:#C96442;--accent2:#C96442;--mint:#C96442;--card:#FFFFFF;--done:#5A8F5C}
-:root[data-theme="dark"]{--bg:#262624;--ink:#F5F4EE;--muted:#A6A39A;--line:#3A3936;--accent:#D97757;--accent2:#D97757;--mint:#D97757;--card:#30302E;--done:#8DBF8F}
-body,button{font-family:"Inter",system-ui,sans-serif}
-.hero h1,h2,.group,.employer > h3,dialog h3,.edu-head h3,.stats b{font-family:"Source Serif 4",Georgia,serif;font-weight:500;letter-spacing:-0.02em}
-.hero h1{font-size:clamp(2.2rem,5vw,3.75rem);max-width:18ch}
-.hero h1 span{background:none;-webkit-background-clip:initial;background-clip:initial;color:var(--ink)}
-.typed{font-weight:500}
-.blob,.grid-bg{display:none}
-.hero{min-height:88vh}
-#progress{background:var(--accent)}
-header{box-shadow:none;background:color-mix(in srgb,var(--bg) 85%,transparent)}
-.btn{border-radius:10px}
-.btn.primary{background:var(--accent);color:#fff;box-shadow:none}
-.btn.primary:hover{box-shadow:none;filter:brightness(1.06)}
-.print{background:var(--accent)!important;color:#fff!important}
-.project,.framework,.edu,.langcard,.opt{backdrop-filter:none;border-radius:14px}
-.project::before,.framework::after{display:none}
-.project:hover{transform:none;border-color:color-mix(in srgb,var(--accent) 55%,var(--line))}
-.tag{background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent)}
-.timeline::before{background:var(--line)}
-.timeline > li.now::before{box-shadow:none}
-.filters button.on,html[lang="en"] .lang b[data-l="en"],html[lang="da"] .lang b[data-l="da"]{background:var(--accent);color:#fff}
-.win{background:color-mix(in srgb,var(--accent) 12%,var(--card));color:var(--ink);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent)}
-.win b{color:var(--accent)}
-.closing{background:var(--card);color:var(--ink);border:1px solid var(--line)}
-.closing p{color:var(--muted);opacity:1}
-.closing .btn{background:var(--accent);color:#fff}
-.stats b{color:var(--ink)}
-.bar i,.courses li::before{background:var(--accent)}
-.hl{color:var(--accent)}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+:root{--bg:#FFFFFF;--ink:#000000;--muted:#4A4A4A;--line:#000000;--accent:#000000;--accent2:#000000;--card:#FFFFFF;--done:#000000;--on:#C6FF3D;--r:0px;--hi:#C6FF3D}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#000000;--ink:#FFFFFF;--muted:#B5B5B5;--line:#FFFFFF;--accent:#C6FF3D;--accent2:#C6FF3D;--card:#000000;--done:#C6FF3D;--on:#000000;--hi:#C6FF3D}}
+:root[data-theme="dark"]{--bg:#000000;--ink:#FFFFFF;--muted:#B5B5B5;--line:#FFFFFF;--accent:#C6FF3D;--accent2:#C6FF3D;--card:#000000;--done:#C6FF3D;--on:#000000;--hi:#C6FF3D}
+body,button{font-family:"Archivo",system-ui,sans-serif}
+.hero h1,h2,.group,.employer > h3,dialog h3,.edu-head h3,.stats b{font-family:"Archivo Black",Impact,sans-serif;font-weight:400;letter-spacing:-0.02em}
+.hero h1{font-size:clamp(2.6rem,7vw,5rem);line-height:.98}
+.project,.framework,.edu,.langcard,.closing,.opt,.skills span,.filters button,.hello,header,.tag,.lang,.lang b,.print,.btn,.theme,.dd-menu,dialog{border-radius:0!important}
+.project,.framework,.edu,.langcard,.closing{border-width:2px}
+.project:hover{box-shadow:6px 6px 0 var(--hi);border-color:var(--line)}
+.btn.primary,.print,.closing .btn,.filters button.on,html[lang="en"] .lang b[data-l="en"],html[lang="da"] .lang b[data-l="da"],.avatar{background:var(--hi)!important;color:#000!important}
+.tag{background:var(--hi);color:#000}
+.hl{background:var(--hi);color:#000;padding:0 .2em}
+.typed b{background:var(--hi);color:#000;padding:0 .15em}
+.win{background:var(--hi);color:#000;border:2px solid var(--line)}
+.win b{color:#000}
+.timeline::before{width:3px;background:var(--ink)}
+.timeline > li::before{border-radius:0}
+.timeline > li.now::before{background:var(--hi);border-color:var(--ink)}
+#progress{background:var(--hi);height:5px}
+.track li::before{border-radius:0;background:var(--hi);color:#000}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+}
+@media print{
+  @page{margin:14mm}
+  :root,:root[data-theme="dark"]{--bg:#fff;--ink:#111;--muted:#444;--line:#ddd;--card:#fff}
+  body{background:#fff;font-size:10.5pt;line-height:1.45}
+  #progress,header,.blob,.cta,.hello,.typed,.closing,dialog,.trophy,.filters{display:none!important}
+  .print-only{display:block}
+  .print-role{font-size:14pt;font-weight:600;color:var(--accent);margin-top:.4rem}
+  .print-contact{color:var(--muted);margin-top:.3rem}
+  .hero{min-height:0;padding:0 0 1rem}
+  .hero h1{font-size:30pt;margin-top:0}
+  main{padding:0}
+  main section{margin:0 0 1.5rem}
+  .reveal{opacity:1!important;transform:none!important}
+  .employer{padding:.8rem 0;grid-template-columns:150px 1fr}
+  .timeline > li{margin-bottom:.8rem;break-inside:avoid}
+  .projects{grid-template-columns:repeat(2,1fr)!important;gap:.6rem}
+  .project,.project.wide{grid-column:auto!important;padding:.8rem;break-inside:avoid;box-shadow:none}
+  .project.full{grid-column:1 / -1!important}
+  a{color:var(--ink);text-decoration:none}
+}
 </style>
 </head>
-<body data-design="claude">
+<body data-design="mono">
 <div id="progress"></div>
 <header>
   <div class="dd" data-sec="experience">
@@ -323,7 +268,6 @@ header{box-shadow:none;background:color-mix(in srgb,var(--bg) 85%,transparent)}
 </header>
 
 <section class="hero">
-  <div class="grid-bg"></div>
   <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
   <div class="hero-inner">
     <div class="hero-text">
@@ -628,7 +572,7 @@ header{box-shadow:none;background:color-mix(in srgb,var(--bg) 85%,transparent)}
 <dialog id="contact" aria-labelledby="contact-title">
   <button type="button" class="x" aria-label="Close" data-close>&times;</button>
   <div class="dhead">
-    <img class="avatar" src="1787389072578.png" alt="Sohrab Malek" width="64" height="64" loading="lazy">
+    <div class="avatar" aria-hidden="true">SM</div>
     <div>
       <h3 id="contact-title">Get in touch</h3>
       <p>Choose how you want to reach me.</p>
@@ -636,7 +580,7 @@ header{box-shadow:none;background:color-mix(in srgb,var(--bg) 85%,transparent)}
   </div>
   <div class="opts">
     <a class="opt wa" href="https://wa.me/4593937832" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.4-.3Z"/></svg>
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.200 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.2-.2-.4-.3Z"/></svg>
       <span><b>WhatsApp</b><small>+45 93 93 78 32</small></span>
     </a>
     <a class="opt mail" href="mailto:sohrabmalek16@gmail.com">
@@ -644,7 +588,7 @@ header{box-shadow:none;background:color-mix(in srgb,var(--bg) 85%,transparent)}
       <span><b>Email</b><small>sohrabmalek16@gmail.com</small></span>
     </a>
     <a class="opt li" href="https://www.linkedin.com/in/sohrabmalek/" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05a3.75 3.75 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.21 0 22.23 0Z"/></svg>
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M20.45 20.45h-3.56v-5.570c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.140 2.94v5.67H9.34V9h3.42v1.56h.05a3.75 3.75 0 0 1 3.37-1.85c3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.230.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.73V1.73C24 .77 23.21 0 22.23 0Z"/></svg>
       <span><b>LinkedIn</b><small>linkedin.com/in/sohrabmalek</small></span>
     </a>
   </div>
@@ -652,36 +596,24 @@ header{box-shadow:none;background:color-mix(in srgb,var(--bg) 85%,transparent)}
 <script>
 document.getElementById("y").textContent=new Date().getFullYear();
 const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
-// typed roles
 const ROLES={en:["an AI Engineer","Head of IT","a systems specialist","an automation builder"],da:["AI Engineer","Head of IT","systemspecialist","automatiseringsudvikler"]};let roles=ROLES.en;
 const el=document.getElementById("typed");
 if(reduce){el.textContent=roles[0]}else{let r=0,i=0,del=false;(function tick(){const w=roles[r];el.textContent=w.slice(0,i);if(!del&&i<w.length){i++;setTimeout(tick,70)}else if(!del){del=true;setTimeout(tick,1600)}else if(i>0){i--;setTimeout(tick,35)}else{del=false;r=(r+1)%roles.length;setTimeout(tick,300)}})()}
-// reveal
 document.querySelectorAll("main section:not(.closing), .employer, .project").forEach(e=>e.classList.add("reveal"));
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll(".reveal").forEach(e=>io.observe(e));
-// count up
 document.querySelectorAll("[data-count]").forEach(b=>{const n=+b.dataset.count,s=b.dataset.suffix||"";if(reduce){b.textContent=n+s;return}let c=0;const st=setInterval(()=>{c++;b.textContent=c+s;if(c>=n)clearInterval(st)},1200/n)});
-// spotlight cards
-document.querySelectorAll(".project").forEach(c=>c.addEventListener("pointermove",e=>{const r=c.getBoundingClientRect();c.style.setProperty("--x",(e.clientX-r.left)+"px");c.style.setProperty("--y",(e.clientY-r.top)+"px")}));
-// progress + active nav
 const bar=document.getElementById("progress"),links=[...document.querySelectorAll("header a:not([data-filter])")];
 addEventListener("scroll",()=>{const h=document.documentElement;bar.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+"%";let cur="";document.querySelectorAll("main section[id]").forEach(s=>{if(s.getBoundingClientRect().top<140)cur=s.id});links.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+cur))},{passive:true});
-
-// contact dialog
 const dlg=document.getElementById("contact");
 document.querySelectorAll("[data-contact]").forEach(b=>b.addEventListener("click",()=>dlg.showModal()));
 dlg.querySelector("[data-close]").addEventListener("click",()=>dlg.close());
 dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close()});
-
-// nav dropdowns
 const dds=[...document.querySelectorAll(".dd")];
 dds.forEach(d=>{const b=d.querySelector(".dd-btn");b.addEventListener("click",e=>{e.stopPropagation();const o=!d.classList.contains("open");dds.forEach(x=>{x.classList.remove("open");x.querySelector(".dd-btn").setAttribute("aria-expanded","false")});if(o){d.classList.add("open");b.setAttribute("aria-expanded","true")}});d.querySelectorAll(".dd-menu a").forEach(a=>a.addEventListener("click",()=>d.classList.remove("open")))});
 document.addEventListener("click",()=>dds.forEach(d=>d.classList.remove("open")));
 document.addEventListener("keydown",e=>{if(e.key==="Escape")dds.forEach(d=>d.classList.remove("open"))});
 addEventListener("scroll",()=>{let cur="";document.querySelectorAll("main section[id]").forEach(s=>{if(s.getBoundingClientRect().top<140)cur=s.id});dds.forEach(d=>d.classList.toggle("active",d.dataset.sec.split(" ").includes(cur)))},{passive:true});
-
-// project filter
 const psec=document.getElementById("projects");
 function filterProjects(k){
   psec.classList.toggle("filtered",k!=="all");
@@ -691,16 +623,12 @@ function filterProjects(k){
   document.querySelectorAll(".dd-menu a[data-filter]").forEach(a=>a.classList.toggle("active",a.dataset.filter===k));
 }
 document.querySelectorAll("[data-filter]").forEach(el=>el.addEventListener("click",()=>filterProjects(el.dataset.filter)));
-
-// theme toggle
 const KEY="theme-"+document.body.dataset.design;
 function applyTheme(m){document.documentElement.dataset.theme=m;try{localStorage.setItem(KEY,m)}catch(e){}}
 let th=null;try{th=localStorage.getItem(KEY)}catch(e){}
 applyTheme(th||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"));
 document.getElementById("theme").addEventListener("click",()=>applyTheme(document.documentElement.dataset.theme==="dark"?"light":"dark"));
-
-// language
-const DA={"Experience": "Erfaring", "Projects": "Projekter", "Skills": "Kompetencer", "Certificates": "Certifikater", "Open to new opportunities": "Åben for nye muligheder", "I turn business needs into working systems. I have built the IT foundation, data platform and AI automation at DRIVR, a fast growing Danish mobility tech company, and I now ship code to its production platforms.": "Jeg omsætter forretningsbehov til systemer, der virker. Jeg har bygget IT-fundamentet, dataplatformen og AI-automatiseringen hos DRIVR, en hurtigtvoksende dansk mobility tech-virksomhed, og jeg leverer nu kode til dens produktionsplatforme.", "Get in touch": "Kontakt mig", "years in IT, data and automation": "års erfaring med IT, data og automatisering", "delivered system projects": "leverede systemprojekter", "AI goals shipped in Sales": "AI-mål leveret i Salg", "certificates": "certifikater", "Copenhagen, Aug 2024 to present, five roles in two years": "København, aug. 2024 til nu, fem roller på to år", "Aug 2026, Present": "Aug. 2026, nu", "Apr 2026, Present": "Apr. 2026, nu", "Oct 2025, Apr 2026": "Okt. 2025, apr. 2026", "Apr 2025, Dec 2025": "Apr. 2025, dec. 2025", "Aug 2024, Apr 2025": "Aug. 2024, apr. 2025", "Jan 2022, Aug 2024": "Jan. 2022, aug. 2024", "Aug 2023, Jan 2024": "Aug. 2023, jan. 2024", "Feb 2021, Jul 2021": "Feb. 2021, jul. 2021", "Driving the company's AI adoption, from strategy and department goals to production ready automation. I combine my business and IT background with hands on engineering, contributing directly to the product platforms used by drivers and fleet operators.": "Driver virksomhedens AI-adoption, fra strategi og mål for afdelingerne til produktionsklar automatisering. Jeg kombinerer min forretnings- og IT-baggrund med hands on udvikling og bidrager direkte til de produktplatforme, som chauffører og vognmænd bruger.", "Responsible for IT strategy, infrastructure, security, compliance and vendor management across all departments.": "Ansvarlig for IT-strategi, infrastruktur, sikkerhed, compliance og leverandørstyring på tværs af alle afdelinger.", "IT Systems Specialist": "IT-systemspecialist", "Made the company's systems fit together, scale and stay stable. I bridged the digital product with sales and operations, converting business needs into buildable specifications.": "Fik virksomhedens systemer til at spille sammen, skalere og forblive stabile. Jeg bandt det digitale produkt sammen med salg og drift og omsatte forretningsbehov til udviklingsklare specifikationer.", "Delivered specifications for new features in the B2B interface, B2B and B2C apps, driver trip interface and B2B portals.": "Leverede specifikationer til nye funktioner i B2B-interfacet, B2B- og B2C-apps, chaufførernes tur-interface og B2B-portaler.", "Specified the internal data warehouse for backend applications.": "Specificerede det interne datawarehouse til backend-applikationer.", "Specified over the air price models for the driver interface and taximeter.": "Specificerede over the air-prismodeller til chaufførinterfacet og taxameteret.", "Maintained internal procedures, SaaS applications and infrastructure.": "Vedligeholdt interne procedurer, SaaS-applikationer og infrastruktur.", "IT and Automation Specialist": "IT- og automatiseringsspecialist", "Drove IT strategy and infrastructure management.": "Drev IT-strategi og infrastrukturstyring.", "Designed and implemented automation for key business processes.": "Designede og implementerede automatisering af centrale forretningsprocesser.", "Led cross departmental digital transformation initiatives.": "Ledte tværgående initiativer inden for digital transformation.", "Ensured cybersecurity and compliance best practice.": "Sikrede best practice inden for cybersikkerhed og compliance.", "Managed vendor relationships and technology budgets.": "Styrede leverandørrelationer og teknologibudgetter.", "Automation Specialist": "Automatiseringsspecialist", "Sales process automation and AI driven lead management funnels.": "Automatisering af salgsprocesser og AI-drevne funnels til leadstyring.", "API integrations between data and systems.": "API-integrationer mellem data og systemer.", "Website and frontend design, BI and reporting, IT modernization.": "Hjemmeside- og frontenddesign, BI og rapportering, IT-modernisering.", "Herlev, Jan 2022 to Aug 2024, Mobility and New Business": "Herlev, jan. 2022 til aug. 2024, Mobility and New Business", "Student Assistant": "Studentermedhjælper", "Worked part time alongside my studies in the Mobility and New Business department. I turned data into decisions through analysis, reporting and Power BI dashboards, automated and optimized recurring processes, produced marketing material, and delivered competitor and target group analyses. I also took part in project management and reported on KPIs and performance to the department.": "Arbejdede deltid sideløbende med mine studier i afdelingen Mobility and New Business. Jeg omsatte data til beslutninger gennem analyser, rapportering og Power BI-dashboards, automatiserede og optimerede tilbagevendende processer, udarbejdede marketingmateriale og leverede konkurrent- og målgruppeanalyser. Jeg deltog også i projektledelse og rapporterede KPI'er og performance til afdelingen.", "Intern": "Praktikant", "Five month internship as part of the final year of my bachelor. Within Connected Services I ran customer research, analysed car sharing trends and performance, built business intelligence dashboards and automated processes with Power Automate. I also coordinated meetings, prepared presentations and managed smaller projects.": "Fem måneders praktik som en del af det sidste år på min bachelor. I Connected Services gennemførte jeg kundeundersøgelser, analyserede trends og performance for delebiler, byggede business intelligence-dashboards og automatiserede processer med Power Automate. Jeg koordinerede også møder, udarbejdede præsentationer og ledte mindre projekter.", "Herlev, Feb 2021 to Jul 2021, part time during my bachelor studies": "Herlev, feb. 2021 til jul. 2021, deltid under min bachelor", "Student Assistant, IT Delivery": "Studentermedhjælper, IT Delivery", "Part time role alongside my bachelor studies, supporting the IT Delivery department with ad hoc tasks, data structuring, invoice handling, end user communication and incident management in ServiceNow.": "Deltidsstilling ved siden af min bachelor, hvor jeg støttede IT Delivery-afdelingen med ad hoc-opgaver, datastrukturering, fakturahåndtering, kommunikation med slutbrugere og incident management i ServiceNow.", "Selected projects": "Udvalgte projekter", "At": "Hos", "Engineering": "Udvikling", "Operator and driver portal": "Vognmands- og chaufførportal", "Developing the main web portal where fleet operators and drivers track earnings, statistics and find jobs. Shipping fixes through branches and pull requests with Claude Code.": "Udvikler den centrale webportal, hvor vognmænd og chauffører følger indtjening og statistik og finder ture. Leverer rettelser via branches og pull requests med Claude Code.", "HubSpot implementation": "Implementering af HubSpot", "Full CRM setup and rollout, including pipelines and workflow automations for sales and onboarding.": "Fuld opsætning og udrulning af CRM, inklusive pipelines og workflow-automatiseringer til salg og onboarding.", "Contracts": "Kontrakter", "Contractbook implementation": "Implementering af Contractbook", "Implemented Contractbook as one shared space for contracts between the company, fleet operators and partners, which made it possible to automate the sales and CRM processes.": "Implementerede Contractbook som ét samlet sted for kontrakter mellem virksomheden, vognmænd og partnere, hvilket gjorde det muligt at automatisere salgs- og CRM-processerne.", "Annual IT audit": "Årlig IT-revision", "Ran the yearly IT audit that enabled certification. Collected documentation, coordinated all departments and secured data processing agreements with vendors.": "Gennemførte den årlige IT-revision, der muliggjorde certificering. Indsamlede dokumentation, koordinerede alle afdelinger og sikrede databehandleraftaler med leverandører.", "Infrastructure": "Infrastruktur", "Microsoft cloud migration": "Migrering til Microsoft cloud", "Managed the migration of all laptops and local systems to Microsoft cloud together with an external IT partner.": "Styrede migreringen af alle bærbare og lokale systemer til Microsoft cloud sammen med en ekstern IT-partner.", "Security": "Sikkerhed", "Cybersecurity program": "Cybersikkerhedsprogram", "Led the company wide security project with an external partner, including a phishing workshop and phishing simulations across all departments.": "Ledte det virksomhedsdækkende sikkerhedsprojekt med en ekstern partner, inklusive en phishing-workshop og phishing-simuleringer på tværs af alle afdelinger.", "Public transport integration": "Integration med offentlig trafik", "Delivered the backend and system integration requirements between our platform and a regional public transport authority's flex transport system.": "Leverede kravene til backend- og systemintegration mellem vores platform og et regionalt trafikselskabs flextrafiksystem.", "Product": "Produkt", "B2B booking portal": "B2B-bookingportal", "Wrote the requirement specifications for a portal where business partners such as hotels and restaurants book taxis directly through our backend.": "Skrev kravspecifikationerne til en portal, hvor erhvervspartnere som hoteller og restauranter booker taxa direkte gennem vores backend.", "Unified data warehouse": "Samlet datawarehouse", "Helped implement a single source of truth where every data source runs through an ETL process before use.": "Var med til at implementere én fælles sandhedskilde, hvor alle datakilder går gennem en ETL-proces før brug.", "Over the air taxi tariffs": "Over the air-taxitakster", "Specified system requirements, mobile UI and the logic behind the full tariff matrix for taxi prices.": "Specificerede systemkrav, mobil-UI og logikken bag hele takstmatricen for taxipriser.", "Payments": "Betalinger", "Ride hailing cash payments": "Kontantbetalinger via ride hailing", "Specified how our backend communicates with a global ride hailing platform to settle payment logic when drivers receive cash instead of digital payments.": "Specificerede, hvordan vores backend kommunikerer med en global ride hailing-platform for at håndtere betalingslogikken, når chauffører modtager kontanter i stedet for digitale betalinger.", "eCare, connected service follow up": "eCare, opfølgning via connected service", "Managed the eCare project, where the car raises alerts and warnings after a set driving period. I brought in Autoflows, an external aftermarket specialist, and connected them to Toyota's eCare data, so alerts were reported to the driver and automatically routed to dealers and workshops for repair follow up. I worked across many stakeholders and markets, and my follow up logic was shared with 5 to 10 European markets and the team in Japan.": "Ledte eCare-projektet, hvor bilen giver alarmer og advarsler efter en given køreperiode. Jeg bragte Autoflows, en ekstern aftermarket-specialist, ind og koblede dem på Toyotas eCare-data, så alarmer blev rapporteret til føreren og automatisk sendt videre til forhandlere og værksteder til opfølgning på reparationer. Jeg arbejdede på tværs af mange interessenter og markeder, og min opfølgningslogik blev delt med 5 til 10 europæiske markeder og teamet i Japan.", "KPI and performance dashboards": "KPI- og performance-dashboards", "Built Power BI dashboards for the Mobility and New Business department, giving management a clear view of KPIs and performance metrics.": "Byggede Power BI-dashboards til afdelingen Mobility and New Business, som gav ledelsen et klart overblik over KPI'er og performance.", "Research": "Analyse", "Car sharing and market insight": "Delebiler og markedsindsigt", "Analysed car sharing trends and performance, ran customer research and delivered competitor and target group analyses that fed into marketing material.": "Analyserede trends og performance for delebiler, gennemførte kundeundersøgelser og leverede konkurrent- og målgruppeanalyser, der indgik i marketingmateriale.", "Automation": "Automatisering", "Process automation": "Procesautomatisering", "Automated and optimized recurring processes with Power Automate within Connected Services, reducing manual reporting work.": "Automatiserede og optimerede tilbagevendende processer med Power Automate i Connected Services og mindskede det manuelle rapporteringsarbejde.", "AI transformation, Sales": "AI-transformation, Salg", "I built and run the company's AI implementation framework, which sets short, medium and long term AI goals per department. In Sales I implemented the full track below.": "Jeg har bygget og driver virksomhedens AI-implementeringsframework, som sætter AI-mål på kort, mellemlang og lang sigt for hver afdeling. I Salg implementerede jeg hele forløbet nedenfor.", "Winner of the internal AI horse race": "Vinder af det interne AI-hestevæddeløb", "Sales finished first in the company's AI adoption race across all departments.": "Salg kom først i mål i virksomhedens AI-kapløb på tværs af alle afdelinger.", "Lead qualification": "Leadkvalificering", "AI agent gathers data to qualify leads": "AI-agent indhenter data til kvalificering af leads", "Leads created automatically in CRM and operator portal": "Leads oprettes automatisk i CRM og vognmandsportalen", "Only qualified leads reach a human": "Kun kvalificerede leads når et menneske", "Vehicle inventory for car sales": "Varelager ved bilsalg", "Fully automated onboarding flow in the operator portal": "Fuldt automatiseret onboardingflow i vognmandsportalen", "Retention": "Fastholdelse", "Matching system between drivers and fleet operators": "Matchingsystem mellem chauffører og vognmænd", "Agentic motivation messaging driven by the data warehouse": "Agentisk motivationskommunikation drevet af datawarehouset", "Skills and tools": "Kompetencer og værktøjer", "AI agents and automation": "AI-agenter og automatisering", "Requirements specification": "Kravspecifikation", "Business analysis": "Forretningsanalyse", "IT strategy": "IT-strategi", "Cybersecurity and compliance": "Cybersikkerhed og compliance", "GDPR and DPAs": "GDPR og databehandleraftaler", "Microsoft 365 and Azure": "Microsoft 365 og Azure", "Data warehousing and ETL": "Datawarehouse og ETL", "API integrations": "API-integrationer", "UX and frontend design": "UX og frontenddesign", "Stakeholder management": "Interessenthåndtering", "Let's build something": "Lad os bygge noget sammen", "Looking for someone who connects business, IT and AI, and ships? I would love to hear from you.": "Leder du efter en, der forbinder forretning, IT og AI og får tingene leveret? Jeg hører gerne fra dig.", "Choose how you want to reach me.": "Vælg, hvordan du vil kontakte mig.", "Email": "E-mail", "Print / Save CV": "Print / Gem CV", "AI Engineer and Head of IT": "AI Engineer og Head of IT", "Phone": "Telefon", "Education": "Uddannelse", "Completed June 2024, Copenhagen": "Afsluttet juni 2024, København", "Bachelor of Business Economics and Information Technology": "Professionsbachelor i økonomi og informationsteknologi", ", Copenhagen School of Design and Technology": ", Københavns Erhvervsakademi", "A professional bachelor degree that combines business economics with IT. The programme focuses on IT business analysis, digital business development, change management and IT management, with practical work on requirement specification, IT architecture, project management and user experience.": "En professionsbachelor, der kombinerer erhvervsøkonomi med IT. Uddannelsen fokuserer på IT-forretningsanalyse, digital forretningsudvikling, forandringsledelse og IT-ledelse med praktisk arbejde inden for kravspecifikation, IT-arkitektur, projektledelse og brugeroplevelse.", "Completed courses and projects": "Gennemførte fag og projekter", "Business economics and IT, semester 1 and 2": "Erhvervsøkonomi og IT, 1. og 2. semester", "Semester project, 3rd semester": "Semesterprojekt, 3. semester", "Semester project, 4th semester": "Semesterprojekt, 4. semester", "Elective: Working as a business analyst": "Valgfag: Working as a business analyst", "Elective: Consulting and Professional Services Management": "Valgfag: Consulting and Professional Services Management", "Internship at Toyota Danmark": "Praktik hos Toyota Danmark", "Theory of Science and Project Methodology": "Videnskabsteori og projektmetode", "Bachelor project": "Bachelorprojekt", "Based in Malmö, Sweden, open to relocation": "Bosat i Malmø, Sverige, åben for at flytte", "Malmö, Sweden, open to relocation": "Malmø, Sverige, åben for at flytte", "Languages": "Sprog", "English": "Engelsk", "Danish": "Dansk", "Fluent, written and spoken": "Flydende i skrift og tale", "Education & languages": "Uddannelse og sprog", "All projects": "Alle projekter", "Product and engineering": "Produkt og udvikling", "Integrations": "Integrationer", "Automation and CRM": "Automatisering og CRM", "Data and insight": "Data og indsigt", "IT, security and compliance": "IT, sikkerhed og compliance", "AI customer support chatbot": "AI-chatbot til kundeservice", "Launched an AI driven customer support chatbot on the company website that answers customer questions around the clock, reaching a": "Lancerede en AI-drevet kundeservice-chatbot på virksomhedens hjemmeside, der besvarer kundernes spørgsmål døgnet rundt og opnåede en", "92% satisfaction rating": "tilfredshedsscore på 92%", "Hello, welcome to my portfolio": "Hej, velkommen til min portfolio", "My name is Sohrab and I work as": "Jeg hedder Sohrab og arbejder som"};
+const DA={"Experience": "Erfaring", "Projects": "Projekter", "Skills": "Kompetencer", "Certificates": "Certifikater", "Open to new opportunities": "Åben for nye muligheder", "I turn business needs into working systems. I have built the IT foundation, data platform and AI automation at DRIVR, a fast growing Danish mobility tech company, and I now ship code to its production platforms.": "Jeg omsætter forretningsbehov til systemer, der virker. Jeg har bygget IT-fundamentet, dataplatformen og AI-automatiseringen hos DRIVR, en hurtigtvoksende dansk mobility tech-virksomhed, og jeg leverer nu kode til dens produktionsplatforme.", "Get in touch": "Kontakt mig", "years in IT, data and automation": "års erfaring med IT, data og automatisering", "delivered system projects": "leverede systemprojekter", "AI goals shipped in Sales": "AI-mål leveret i Salg", "certificates": "certifikater", "Copenhagen, Aug 2024 to present, five roles in two years": "København, aug. 2024 til nu, fem roller på to år", "Aug 2026, Present": "Aug. 2026, nu", "Apr 2026, Present": "Apr. 2026, nu", "Oct 2025, Apr 2026": "Okt. 2025, apr. 2026", "Apr 2025, Dec 2025": "Apr. 2025, dec. 2025", "Aug 2024, Apr 2025": "Aug. 2024, apr. 2025", "Jan 2022, Aug 2024": "Jan. 2022, aug. 2024", "Aug 2023, Jan 2024": "Aug. 2023, jan. 2024", "Feb 2021, Jul 2021": "Feb. 2021, jul. 2021", "Driving the company's AI adoption, from strategy and department goals to production ready automation. I combine my business and IT background with hands on engineering, contributing directly to the product platforms used by drivers and fleet operators.": "Driver virksomhedens AI-adoption, fra strategi og mål for afdelingerne til produktionsklar automatisering. Jeg kombinerer min forretnings- og IT-baggrund med hands on udvikling og bidrager direkte til de produktplatforme, som chauffører og vognmænd bruger.", "Responsible for IT strategy, infrastructure, security, compliance and vendor management across all departments.": "Ansvarlig for IT-strategi, infrastruktur, sikkerhed, compliance og leverandørstyring på tværs af alle afdelinger.", "IT Systems Specialist": "IT-systemspecialist", "Made the company's systems fit together, scale and stay stable. I bridged the digital product with sales and operations, converting business needs into buildable specifications.": "Fik virksomhedens systemer til at spille sammen, skalere og forblive stabile. Jeg bandt det digitale produkt sammen med salg og drift og omsatte forretningsbehov til udviklingsklare specifikationer.", "Delivered specifications for new features in the B2B interface, B2B and B2C apps, driver trip interface and B2B portals.": "Leverede specifikationer til nye funktioner i B2B-interfacet, B2B- og B2C-apps, chaufførernes tur-interface og B2B-portaler.", "Specified the internal data warehouse for backend applications.": "Specificerede det interne datawarehouse til backend-applikationer.", "Specified over the air price models for the driver interface and taximeter.": "Specificerede over the air-prismodeller til chaufførinterfacet og taxameteret.", "Maintained internal procedures, SaaS applications and infrastructure.": "Vedligeholdt interne procedurer, SaaS-applikationer og infrastruktur.", "IT and Automation Specialist": "IT- og automatiseringsspecialist", "Drove IT strategy and infrastructure management.": "Drev IT-strategi og infrastrukturstyring.", "Designed and implemented automation for key business processes.": "Designede og implementerede automatisering af centrale forretningsprocesser.", "Led cross departmental digital transformation initiatives.": "Ledte tværgående initiativer inden for digital transformation.", "Ensured cybersecurity and compliance best practice.": "Sikrede best practice inden for cybersikkerhed og compliance.", "Managed vendor relationships and technology budgets.": "Styrede leverandørrelationer og teknologibudgetter.", "Automation Specialist": "Automatiseringsspecialist", "Sales process automation and AI driven lead management funnels.": "Automatisering af salgsprocesser og AI-drevne funnels til leadstyring.", "API integrations between data and systems.": "API-integrationer mellem data og systemer.", "Website and frontend design, BI and reporting, IT modernization.": "Hjemmeside- og frontenddesign, BI og rapportering, IT-modernisering.", "Herlev, Jan 2022 to Aug 2024, Mobility and New Business": "Herlev, jan. 2022 til aug. 2024, Mobility and New Business", "Student Assistant": "Studentermedhjælper", "Worked part time alongside my studies in the Mobility and New Business department. I turned data into decisions through analysis, reporting and Power BI dashboards, automated and optimized recurring processes, produced marketing material, and delivered competitor and target group analyses. I also took part in project management and reported on KPIs and performance to the department.": "Arbejdede deltid sideløbende med mine studier i afdelingen Mobility and New Business. Jeg omsatte data til beslutninger gennem analyser, rapportering og Power BI-dashboards, automatiserede og optimerede tilbagevendende processer, udarbejdede marketingmateriale og leverede konkurrent- og målgruppeanalyser. Jeg deltog også i projektledelse og rapporterede KPI'er og performance til afdelingen.", "Intern": "Praktikant", "Five month internship as part of the final year of my bachelor. Within Connected Services I ran customer research, analysed car sharing trends and performance, built business intelligence dashboards and automated processes with Power Automate. I also coordinated meetings, prepared presentations and managed smaller projects.": "Fem måneders praktik som en del af det sidste år på min bachelor. I Connected Services gennemførte jeg kundeundersøgelser, analyserede trends og performance for delebiler, byggede business intelligence-dashboards og automatiserede processer med Power Automate. Jeg koordinerede også møder, udarbejdede præsentationer og ledte mindre projekter.", "Herlev, Feb 2021 to Jul 2021, part time during my bachelor studies": "Herlev, feb. 2021 til jul. 2021, deltid under min bachelor", "Student Assistant, IT Delivery": "Studentermedhjælper, IT Delivery", "Part time role alongside my bachelor studies, supporting the IT Delivery department with ad hoc tasks, data structuring, invoice handling, end user communication and incident management in ServiceNow.": "Deltidsstilling ved siden af min bachelor, hvor jeg støttede IT Delivery-afdelingen med ad hoc-opgaver, datastrukturering, fakturahåndtering, kommunikation med slutbrugere og incident management i ServiceNow.", "Selected projects": "Udvalgte projekter", "At": "Hos", "Engineering": "Udvikling", "Operator and driver portal": "Vognmands- og chaufførportal", "Developing the main web portal where fleet operators and drivers track earnings, statistics and find jobs. Shipping fixes through branches and pull requests with Claude Code.": "Udvikler den centrale webportal, hvor vognmænd og chauffører følger indtjening og statistik og finder ture. Leverer rettelser via branches og pull requests med Claude Code.", "HubSpot implementation": "Implementering af HubSpot", "Full CRM setup and rollout, including pipelines and workflow automations for sales and onboarding.": "Fuld opsætning og udrulning af CRM, inklusive pipelines og workflow-automatiseringer til salg og onboarding.", "Contracts": "Kontrakter", "Contractbook implementation": "Implementering af Contractbook", "Implemented Contractbook as one shared space for contracts between the company, fleet operators and partners, which made it possible to automate the sales and CRM processes.": "Implementerede Contractbook som ét samlet sted for kontrakter mellem virksomheden, vognmænd og partnere, hvilket gjorde det muligt at automatisere salgs- og CRM-processerne.", "Annual IT audit": "Årlig IT-revision", "Ran the yearly IT audit that enabled certification. Collected documentation, coordinated all departments and secured data processing agreements with vendors.": "Gennemførte den årlige IT-revision, der muliggjorde certificering. Indsamlede dokumentation, koordinerede alle afdelinger og sikrede databehandleraftaler med leverandører.", "Infrastructure": "Infrastruktur", "Microsoft cloud migration": "Migrering til Microsoft cloud", "Managed the migration of all laptops and local systems to Microsoft cloud together with an external IT partner.": "Styrede migreringen af alle bærbare og lokale systemer til Microsoft cloud sammen med en ekstern IT-partner.", "Security": "Sikkerhed", "Cybersecurity program": "Cybersikkerhedsprogram", "Led the company wide security project with an external partner, including a phishing workshop and phishing simulations across all departments.": "Ledte det virksomhedsdækkende sikkerhedsprojekt med en ekstern partner, inklusive en phishing-workshop og phishing-simuleringer på tværs af alle afdelinger.", "Public transport integration": "Integration med offentlig trafik", "Delivered the backend and system integration requirements between our platform and a regional public transport authority's flex transport system.": "Leverede kravene til backend- og systemintegration mellem vores platform og et regionalt trafikselskabs flextrafiksystem.", "Product": "Produkt", "B2B booking portal": "B2B-bookingportal", "Wrote the requirement specifications for a portal where business partners such as hotels and restaurants book taxis directly through our backend.": "Skrev kravspecifikationerne til en portal, hvor erhvervspartnere som hoteller og restauranter booker taxa direkte gennem vores backend.", "Unified data warehouse": "Samlet datawarehouse", "Helped implement a single source of truth where every data source runs through an ETL process before use.": "Var med til at implementere én fælles sandhedskilde, hvor alle datakilder går gennem en ETL-proces før brug.", "Over the air taxi tariffs": "Over the air-taxitakster", "Specified system requirements, mobile UI and the logic behind the full tariff matrix for taxi prices.": "Specificerede systemkrav, mobil-UI og logikken bag hele takstmatricen for taxipriser.", "Payments": "Betalinger", "Ride hailing cash payments": "Kontantbetalinger via ride hailing", "Specified how our backend communicates with a global ride hailing platform to settle payment logic when drivers receive cash instead of digital payments.": "Specificerede, hvordan vores backend kommunikerer med en global ride hailing-platform for at håndtere betalingslogikken, når chauffører modtager kontanter i stedet for digitale betalinger.", "eCare, connected service follow up": "eCare, opfølgning via connected service", "Managed the eCare project, where the car raises alerts and warnings after a set driving period. I brought in Autoflows, an external aftermarket specialist, and connected them to Toyota's eCare data, so alerts were reported to the driver and automatically routed to dealers and workshops for repair follow up. I worked across many stakeholders and markets, and my follow up logic was shared with 5 to 10 European markets and the team in Japan.": "Ledte eCare-projektet, hvor bilen giver alarmer og advarsler efter en given køreperiode. Jeg bragte Autoflows, en ekstern aftermarket-specialist, ind og koblede dem på Toyotas eCare-data, så alarmer blev rapporteret til føreren og automatisk sendt videre til forhandlere og værksteder til opfølgning på reparationer. Jeg arbejdede på tværs af mange interessenter og markeder, og min opfølgningslogik blev delt med 5 til 10 europæiske markeder og teamet i Japan.", "KPI and performance dashboards": "KPI- og performance-dashboards", "Built Power BI dashboards for the Mobility and New Business department, giving management a clear view of KPIs and performance metrics.": "Byggede Power BI-dashboards til afdelingen Mobility and New Business, som gav ledelsen et klart overblik over KPI'er og performance.", "Research": "Analyse", "Car sharing and market insight": "Delebiler og markedsindsigt", "Analysed car sharing trends and performance, ran customer research and delivered competitor and target group analyses that fed into marketing material.": "Analyserede trends og performance for delebiler, gennemførte kundeundersøgelser og leverede konkurrent- og målgruppeanalyser, der indgik i marketingmateriale.", "Automation": "Automatisering", "Process automation": "Procesautomatisering", "Automated and optimized recurring processes with Power Automate within Connected Services, reducing manual reporting work.": "Automatiserede og optimerede tilbagevendende processer med Power Automate i Connected Services og mindskede det manuelle rapporteringsarbejde.", "AI transformation, Sales": "AI-transformation, Salg", "I built and run the company's AI implementation framework, which sets short, medium and long term AI goals per department. In Sales I implemented the full track below.": "Jeg har bygget og driver virksomhedens AI-implementeringsframework, som sætter AI-mål på kort, mellemlang og lang sigt for hver afdeling. I Salg implementerede jeg hele forløbet nedenfor.", "Winner of the internal AI horse race": "Vinder af det interne AI-hestevæddeløb", "Sales finished first in the company's AI adoption race across all departments.": "Salg kom først i mål i virksomhedens AI-kapløb på tværs af alle afdelinger.", "Lead qualification": "Leadkvalificering", "AI agent gathers data to qualify leads": "AI-agent indhenter data til kvalificering af leads", "Leads created automatically in CRM and operator portal": "Leads oprettes automatisk i CRM og vognmandsportalen", "Only qualified leads reach a human": "Kun kvalificerede leads når et menneske", "Vehicle inventory for car sales": "Varelager ved bilsalg", "Fully automated onboarding flow in the operator portal": "Fuldt automatiseret onboardingflow i vognmandsportalen", "Retention": "Fastholdelse", "Matching system between drivers and fleet operators": "Matchingsystem mellem chauffører og vognmænd", "Agentic motivation messaging driven by the data warehouse": "Agentisk motivationskommunikation drevet af datawarehouset", "Skills and tools": "Kompetencer og værktøjer", "AI agents and automation": "AI-agenter og automatisering", "Requirements specification": "Kravspecifikation", "Business analysis": "Forretningsanalyse", "IT strategy": "IT-strategi", "Cybersecurity and compliance": "Cybersikkerhed og compliance", "GDPR and DPAs": "GDPR og databehandleraftaler", "Microsoft 365 and Azure": "Microsoft 365 og Azure", "Data warehousing and ETL": "Datawarehouse og ETL", "API integrations": "API-integrationer", "UX and frontend design": "UX og frontenddesign", "Stakeholder management": "Interessenthåndtering", "Let's build something": "Lad os bygge noget sammen", "Looking for someone who connects business, IT and AI, and ships? I would love to hear from you.": "Leder du efter en, der forbinder forretning, IT og AI og får tingene leveret? Jeg hører gerne fra dig.", "Choose how you want to reach me.": "Vælg, hvordan du vil kontakte mig.", "Email": "E-mail", "AI Engineer and Head of IT": "AI Engineer og Head of IT", "Phone": "Telefon", "Education": "Uddannelse", "Completed June 2024, Copenhagen": "Afsluttet juni 2024, København", "Bachelor of Business Economics and Information Technology": "Professionsbachelor i økonomi og informationsteknologi", ", Copenhagen School of Design and Technology": ", Københavns Erhvervsakademi", "A professional bachelor degree that combines business economics with IT. The programme focuses on IT business analysis, digital business development, change management and IT management, with practical work on requirement specification, IT architecture, project management and user experience.": "En professionsbachelor, der kombinerer erhvervsøkonomi med IT. Uddannelsen fokuserer på IT-forretningsanalyse, digital forretningsudvikling, forandringsledelse og IT-ledelse med praktisk arbejde inden for kravspecifikation, IT-arkitektur, projektledelse og brugeroplevelse.", "Completed courses and projects": "Gennemførte fag og projekter", "Business economics and IT, semester 1 and 2": "Erhvervsøkonomi og IT, 1. og 2. semester", "Semester project, 3rd semester": "Semesterprojekt, 3. semester", "Semester project, 4th semester": "Semesterprojekt, 4. semester", "Elective: Working as a business analyst": "Valgfag: Working as a business analyst", "Elective: Consulting and Professional Services Management": "Valgfag: Consulting and Professional Services Management", "Internship at Toyota Danmark": "Praktik hos Toyota Danmark", "Theory of Science and Project Methodology": "Videnskabsteori og projektmetode", "Bachelor project": "Bachelorprojekt", "Based in Malmö, Sweden, open to relocation": "Bosat i Malmø, Sverige, åben for at flytte", "Malmö, Sweden, open to relocation": "Malmø, Sverige, åben for at flytte", "Languages": "Sprog", "English": "Engelsk", "Danish": "Dansk", "Fluent, written and spoken": "Flydende i skrift og tale", "Education & languages": "Uddannelse og sprog", "All projects": "Alle projekter", "Product and engineering": "Produkt og udvikling", "Integrations": "Integrationer", "Automation and CRM": "Automatisering og CRM", "Data and insight": "Data og indsigt", "IT, security and compliance": "IT, sikkerhed og compliance", "AI customer support chatbot": "AI-chatbot til kundeservice", "Launched an AI driven customer support chatbot on the company website that answers customer questions around the clock, reaching a": "Lancerede en AI-drevet kundeservice-chatbot på virksomhedens hjemmeside, der besvarer kundernes spørgsmål døgnet rundt og opnåede en", "92% satisfaction rating": "tilfredshedsscore på 92%", "Hello, welcome to my portfolio": "Hej, velkommen til min portfolio", "My name is Sohrab and I work as": "Jeg hedder Sohrab og arbejder som"};
 const nodes=[];
 (function walk(n){for(const c of n.childNodes){if(c.nodeType===3){const k=c.nodeValue.replace(/\s+/g," ").trim();if(k&&DA[k])nodes.push([c,c.nodeValue,k])}else if(c.nodeType===1&&!/^(SCRIPT|STYLE|svg)$/i.test(c.nodeName))walk(c)}})(document.body);
 const TITLE={en:document.title,da:"Sohrab Malek | Portfolio"};
